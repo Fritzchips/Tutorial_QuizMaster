@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 3
   m_EditorClassIdentifier: 
   question: '"Procastination = Poverty" Who says this quote?'
+  answers:
+  - Sora
+  - Me
+  - You
+  - Dan Lok
+  correctAnswerIndex: 3

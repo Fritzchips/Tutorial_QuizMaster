@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 2
   m_EditorClassIdentifier: 
   question: '"The Major Key to your better future is you" Who says this quote?'
+  answers:
+  - Les Brown
+  - Jim Rohn
+  - Sora
+  - Wrong
+  correctAnswerIndex: 1
