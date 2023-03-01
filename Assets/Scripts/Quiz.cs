@@ -33,15 +33,17 @@ public class Quiz : MonoBehaviour
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
+            hasAnsweredEarly = false;
             GetNextQuestion();
             timer.loadNextQuestion = false;
         } else if (!hasAnsweredEarly && !timer.isAnsweringQuestion)
         {
-
+            DisplayAnswer(-1);
+            UpdateButtonState(false);
         }
     }
 
-    public void OnAnswerSelected(int index)
+    private void DisplayAnswer(int index)
     {
         correctAnswerIndex = question.GetCorrectAnswerIndex();
         Image buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
@@ -49,7 +51,7 @@ public class Quiz : MonoBehaviour
         if (index.Equals(correctAnswerIndex))
         {
             questionText.text = "Correct!";
-        } 
+        }
         else
         {
             var correctAnswerText = answerButtons[correctAnswerIndex].GetComponentInChildren<TextMeshProUGUI>();
@@ -57,6 +59,12 @@ public class Quiz : MonoBehaviour
         }
 
         buttonImage.sprite = correctAnswerSprite;
+    }
+
+    public void OnAnswerSelected(int index)
+    {
+        hasAnsweredEarly = true;
+        DisplayAnswer(index);
         UpdateButtonState(false);
         timer.CancelTimer();
     }
